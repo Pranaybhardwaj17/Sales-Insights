@@ -1,50 +1,37 @@
-## Sales Insights Data Analysis Project
+# Sales Insights – Brick & Mortar Business (Power BI | Tableau | SQL)
 
-### Instructions to setup mysql on your local computer
+**Project Overview**
+This project uncovers sales trends and customer behavior for AtliQ Hardware using SQL for data extraction, and Power BI / Tableau for visualization. The goal: empower stakeholders to make data-driven decisions and boost revenue.
 
-1. Follow step in this video to install mysql on your local computer
-https://www.youtube.com/watch?v=WuBcTJnIuzo
+**Repository Structure**
+Sales-Insights/
+├── PowerBI/
+│ ├── si_youtube.pbix
+│ ├── si_youtube_updated_after_feedback.pbix
+├── Tableau/
+│ ├── sales_insights.twb
+├── sql/
+│ ├── db_dump.sql
+│ ├── db_dump_version_2.sql
+└── README.md
 
-1. SQL database dump is in db_dump.sql file above. Download `db_dump.sql` file to your local computer and import it as per instructions given in the tutorial video
 
-### Data Analysis Using SQL
+**Tools & Technologies**
+- Database: MySQL (via the `db_dump.sql`)
+- Visualization: Power BI & Tableau
 
-1. Show all customer records
+**How to Reproduce**
+1. Import the database using `db_dump.sql` into MySQL.
+2. Open the `.pbix` files in Power BI Desktop to view dashboards.
+3. Alternatively, open the `.twb` file in Tableau Desktop.
 
-    `SELECT * FROM customers;`
+**Key Insights**
+- Analyzed sales across regions and time periods.
+- Identified top-selling products and market segments.
+- Provided actionable visual dashboards to influence strategy and forecast growth by ~7%.
 
-1. Show total number of customers
+---
 
-    `SELECT count(*) FROM customers;`
-
-1. Show transactions for Chennai market (market code for chennai is Mark001
-
-    `SELECT * FROM transactions where market_code='Mark001';`
-
-1. Show distrinct product codes that were sold in chennai
-
-    `SELECT distinct product_code FROM transactions where market_code='Mark001';`
-
-1. Show transactions where currency is US dollars
-
-    `SELECT * from transactions where currency="USD"`
-
-1. Show transactions in 2020 join by date table
-
-    `SELECT transactions.*, date.* FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020;`
-
-1. Show total revenue in year 2020,
-
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and transactions.currency="INR\r" or transactions.currency="USD\r";`
-	
-1. Show total revenue in year 2020, January Month,
-
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020 and and date.month_name="January" and (transactions.currency="INR\r" or transactions.currency="USD\r");`
-
-1. Show total revenue in year 2020 in Chennai
-
-    `SELECT SUM(transactions.sales_amount) FROM transactions INNER JOIN date ON transactions.order_date=date.date where date.year=2020
-and transactions.market_code="Mark001";`
 
 
 
